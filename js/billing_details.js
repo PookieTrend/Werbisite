@@ -23,6 +23,7 @@ document.querySelector('.process-btn').addEventListener('click', async (e) => {
     const MyEmail = "amankumarsrivastav124@gmail.com";
     const Phone = document.getElementById('billing-phone').value.trim();
     const OrderNotes = document.getElementById('billing-notes').value.trim();
+    const Size = document.getElementById('billing-size').value.trim(); // optional field
 
     // Check if any required field is empty
     if (!Name || !LastName || !Address || !City || !State || !Pincode || !Email || !Phone) {
@@ -160,7 +161,8 @@ document.querySelector('.process-btn').addEventListener('click', async (e) => {
                     product_id: item.product_id,
                     product_name: item.product_name,
                     product_price: item.product_price,
-                    quantity: item.quantity
+                    quantity: item.quantity,
+                    size: Size || null 
                 }]);
 
             if (billingError) throw billingError;
@@ -185,11 +187,11 @@ document.querySelector('.process-btn').addEventListener('click', async (e) => {
             <ul>`;
 
         cartItems.forEach(item => {
-            orderSummary += `<li>${item.product_name} - ${item.quantity} x ₹${item.product_price}</li>`;
+            orderSummary += `<li>${item.product_name} - ${item.quantity} x ₹${item.product_price} ${Size ? `(Size: ${Size})` : ''}</li>`;
         });
 
         cartItems.forEach(item => {
-            UserOrderSummary += `<li>${item.product_name} - ${item.quantity} x ₹${item.product_price}</li>`;
+            UserOrderSummary += `<li>${item.product_name} - ${item.quantity} x ₹${item.product_price} ${Size ? `(Size: ${Size})` : ''}</li>`;
         });
 
         UserOrderSummary += `</ul><p>Thank you for shopping with us!</p>`;
