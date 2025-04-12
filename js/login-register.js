@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "api-key": "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"
+                    "api-key": "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"
                 },
                 body: JSON.stringify({
                     sender: { name: "Pookie Trend", email: "trendpookie@gmail.com" },
